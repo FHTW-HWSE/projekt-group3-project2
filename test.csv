@@ -1,0 +1,5 @@
+Name,Surname,Birthday,Phone,Address,Email,Reservation_Date,Reservation_Time,Num_Guests,Arrival,Departure
+Lazar,Test,14.12.1999,484848,wesstr 45,lalala,15.05.2023,15:45,4,4,4
+boris,test,dd,dd,dd,dd,15.05.2023,12:15,4,5,5
+Dragce,Komsija,12.12.23,2343242,drkstr 56,lala,13.05.2023,14:98,5,5,5
+Mikica,Komsija,12.12.23,2343242,drkstr 56,lala,10.05.2023,14:98,5,5,5

@@ -24,7 +24,8 @@ void read_reservations(struct guest* guest_list, int num_guests) {
     // Open the CSV file for reading
     FILE* fp = fopen("test.csv", "r");
 
-    time_t currentTime;
+
+        time_t currentTime;
     struct tm *localTime;
     char current_date[100];
 
@@ -36,7 +37,7 @@ void read_reservations(struct guest* guest_list, int num_guests) {
 
     // Format the current time as a string
     strftime(current_date, sizeof(current_date), "%d.%m.%Y", localTime);
-    
+
     // Check if the file exists
     if (fp == NULL) {
         printf("Error: Could not open file.\n");
@@ -63,9 +64,9 @@ void read_reservations(struct guest* guest_list, int num_guests) {
         if (fields_read != 11) {
             continue; // Skip this line if it doesn't have the correct number of fields
         }
-        if (strcmp(guest_list[i].reservation_date, current_date)) {
-            printf("%-30s %-30s Date: %-12s Time: %-8s Guests: %d\n", guest_list[i].name, guest_list[i].surname, 
-            guest_list[i].reservation_date, guest_list[i].reservation_time, guest_list[i].num_guests);
+        
+        if(strcmp(guest_list[i].reservation_date, current_date) == 0){
+            printf("%-30s %-30s Date: %-12s Time: %-8s Guests: %d\n", guest_list[i].name, guest_list[i].surname, guest_list[i].reservation_date, guest_list[i].reservation_time, guest_list[i].num_guests);
         }
         i++;
     }
@@ -73,7 +74,6 @@ void read_reservations(struct guest* guest_list, int num_guests) {
     // Close the file
     fclose(fp);
 }
-
 
 void write_user_data_to_csv(struct guest new_guest) {
     // Open the CSV file for writing
