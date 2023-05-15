@@ -24,8 +24,7 @@ void read_reservations(struct guest* guest_list, int num_guests) {
     // Open the CSV file for reading
     FILE* fp = fopen("test.csv", "r");
 
-
-        time_t currentTime;
+    time_t currentTime;
     struct tm *localTime;
     char current_date[100];
 
