@@ -19,7 +19,7 @@ Restaurant-Reservierungssystem:
 
 6. Hierbei wäre ein simples & übersichtliches interface sehr wünschenswert
 
-7. Am Ende soll ein Tisch, sobald der Gast das Restaurant satt & glücklich verlässt, freigegeben werden & für deinen nächsten Besucher zur VErfügung gestellt werden 
+7. Am Ende soll ein Tisch, sobald der Gast das Restaurant satt & glücklich verlässt, freigegeben werden & für deinen nächsten Besucher zur Verfügung gestellt werden 
 
 Optionale Additions (To be continued constantly :D ): 
 
