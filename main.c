@@ -22,7 +22,37 @@ int main(void) {
 
     switch (user_input) {
         case 'n':
+            printf("Please enter your name: ");
+            scanf("%s", new_guest.name);
+
+            printf("Please enter your surname: ");
+            scanf("%s", new_guest.surname);
+
+            printf("Please enter your birthday (format dd.mm.yyyy): ");
+            scanf("%s", new_guest.birthday);
+
+            printf("Please enter your phone number (max 11 digits, only numbers): ");
+            scanf("%s", new_guest.phone);
+
+            printf("Please enter your address: ");
+            scanf("%s", new_guest.address);
+
+            printf("Please enter your email: ");
+            scanf("%s", new_guest.email);
+
+            printf("Please enter your reservation date: ");
+            scanf("%s", new_guest.reservation_date);
+
+            printf("Please enter your reservation time: ");
+            scanf("%s", new_guest.reservation_time);
+
+            printf("Please enter the number of guests (max 4): ");
+            scanf("%d", &new_guest.num_guests);
+
+            write_user_data_to_csv(new_guest);
+            break;
             // Code for getting new reservation details and writing to the CSV file
+            write_user_data_to_csv(new_guest);
             break;
 
         case 'c':
