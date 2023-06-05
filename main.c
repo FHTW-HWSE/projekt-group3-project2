@@ -3,12 +3,10 @@
 #include <string.h>
 #include <time.h>
 #include "guest.h"
-#include "write_user_data_to_csv.h"
-#include "print_current_reservations.h"
-#include "read_reservations.h"
+#include "csv_operations.h"
 
 int main(void) {
-    int num_guests = 100;
+    int num_guests = 5;
 
     // Allocate memory for the guest_list array
     guest* guest_list = calloc(num_guests, sizeof(guest));
