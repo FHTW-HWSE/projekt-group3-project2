@@ -108,6 +108,8 @@ int main() {
     int size, row, col, choice;
     char board[MAX_SIZE][MAX_SIZE];
 
+    printf("The admin sets up the room and can mark unusable seats with an O, the waiter can reserve tables using X.\n");
+
     while (1) {
         printf("-------------------------------------------\n");
         printf("Type %d for Admin, %d for Waiter, %d to Exit: ", OPTION_ADMIN, OPTION_WAITER, OPTION_EXIT);
