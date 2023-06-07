@@ -1,4 +1,4 @@
-#define MAX_LEN 100
+#define MAX_LEN 300
 
 typedef struct {
     char name[MAX_LEN];
@@ -10,7 +10,7 @@ typedef struct {
     char reservation_date[10];
     char reservation_time[5];
     int num_guests;
-    int table_number;
+    char table_number[5];
     char arrival[5];
     char departure[5];
 } guest;

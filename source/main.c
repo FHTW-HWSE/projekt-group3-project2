@@ -12,43 +12,51 @@ int main(void) {
     guest* guest_list = calloc(num_guests, sizeof(guest));
 
     char user_input;
-    printf("user menu: n = new reservation, c = check current reservations, a = guests have arrived, l = guests have left\nYour input: ");
+    printf("user menu:\na = guests have arrived\nl = guests have left\nc = todays reservations\nn = new reservation\nd = delete reservation\nb = back\nYour input: ");
     scanf("%c", &user_input);
 
     // Initialize a new guest variable
-    guest new_guest;
-
     switch (user_input) {
+        guest new_guest;
+        guest cancled_reservation;
+
         case 'n':
-            printf("Please enter your name: ");
+            printf("Please enter name: ");
             scanf("%s", new_guest.name);
 
-            printf("Please enter your surname: ");
+            printf("Please enter surname: ");
             scanf("%s", new_guest.surname);
 
-            printf("Please enter your birthday (format dd.mm.yyyy): ");
+            printf("Please enter birthday (format dd.mm.yyyy): ");
             scanf("%s", new_guest.birthday);
 
-            printf("Please enter your phone number (max 11 digits, only numbers): ");
+            printf("Please enter phone number (max 11 digits, only numbers): ");
             scanf("%s", new_guest.phone);
 
-            printf("Please enter your address: ");
+            printf("Please enter address: ");
             scanf("%s", new_guest.address);
 
-            printf("Please enter your email: ");
+            printf("Please enter email: ");
             scanf("%s", new_guest.email);
 
-            printf("Please enter your reservation date: ");
+            printf("Please enter reservation date: ");
             scanf("%s", new_guest.reservation_date);
 
-            printf("Please enter your reservation time: ");
+            printf("Please enter reservation time: ");
             scanf("%s", new_guest.reservation_time);
 
             printf("Please enter the number of guests (max 4): ");
             scanf("%d", &new_guest.num_guests);
 
-            write_user_data_to_csv(new_guest);
-            break;
+            printf("Please enter table number: ");
+            scanf("%s", new_guest.table_number);
+
+            printf("Arrival: ");
+            scanf("%s", new_guest.arrival);
+
+            printf("Departure: ");
+            scanf("%s", new_guest.departure);
+
             // Code for getting new reservation details and writing to the CSV file
             write_user_data_to_csv(new_guest);
             break;
@@ -64,8 +72,21 @@ int main(void) {
             free(guest_list);
             break;
 
+        case 'd':
+            printf("Please enter name: ");
+            scanf("%s", cancled_reservation.name);
+
+            printf("Please enter surname: ");
+            scanf("%s", cancled_reservation.surname);
+
+            printf("Please enter table number: ");
+            //scanf("%s", cancled_reservation.table_number);
+
+            //void delete_reservation(guest_list, num_guests, cancled_reservation.name, cancled_reservation.surname, cancled_reservation.table_number);
+            break;
+
         case 'a':
-            // Code for handling guests arrival
+            // Code for handling guests departure
             break;
 
         case 'l':
