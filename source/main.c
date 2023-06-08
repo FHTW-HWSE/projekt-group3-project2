@@ -4,9 +4,10 @@
 #include <time.h>
 #include "guest.h"
 #include "csv_operations.h"
+#include "changes.h"
 
 int main(void) {
-    int num_guests = 5;
+    int num_guests = 6;
 
     // Allocate memory for the guest_list array
     guest* guest_list = calloc(num_guests, sizeof(guest));
@@ -19,6 +20,8 @@ int main(void) {
     switch (user_input) {
         guest new_guest;
         guest cancled_reservation;
+        char arrival_table[5];
+        char arrival_time[5];
 
         case 'n':
             printf("Please enter name: ");
@@ -73,20 +76,25 @@ int main(void) {
             break;
 
         case 'd':
-            printf("Please enter name: ");
-            scanf("%s", cancled_reservation.name);
-
-            printf("Please enter surname: ");
-            scanf("%s", cancled_reservation.surname);
-
             printf("Please enter table number: ");
-            //scanf("%s", cancled_reservation.table_number);
+            scanf("%s", cancled_reservation.table_number);
 
-            //void delete_reservation(guest_list, num_guests, cancled_reservation.name, cancled_reservation.surname, cancled_reservation.table_number);
+            read_reservations(guest_list, num_guests);
+            delete_reservation(guest_list, num_guests, cancled_reservation.table_number);
+            write_reservations(guest_list, num_guests);
             break;
 
         case 'a':
-            // Code for handling guests departure
+            printf("Please enter table number: ");
+            scanf("%s", arrival_table);
+
+            printf("Please enter arrival time: ");
+            scanf("%s", arrival_time);
+
+            // Code for handling guests arrival
+            read_reservations(guest_list, num_guests);
+            guest_departure(guest_list, num_guests, arrival_table, arrival_time);
+            write_reservations(guest_list, num_guests);
             break;
 
         case 'l':

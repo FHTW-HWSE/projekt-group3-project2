@@ -1,7 +1,7 @@
 Name,Surname,Birthday,Phone,Address,Email,Reservation_Date,Reservation_Time,Num_Guests,Table_Number,Arrival,Departure
 Lazar,Clark,12.02.85,15551234567,123 Main Street,lazar.clark@example.com,07.06.2023,14:45,5,11,3,3
 Boris,Smith,21.07.76,15551234568,456 Elm Street,boris.smith@example.com,07.06.2023,08:45,4,12,3,3
-Santiago,Garcia	03.09.92,15551234569,789 Oak Avenue,santiago.garcia@example.com,07.06.2023,12:30,2,12,2,2
 Mihajlo,Erickson,09.11.88,15551234570,321 Maple Drive,mihajlo.erickson@example.com,08.06.2023,19:30,2,14,1,4
 Christian,Muster,12.10.96,6754938246,Wexstrasse 45,christimuster@gmail.com,08.06.2023,14:45,4,34,1,5
 Milan,Nikolic,19.07.2000,39489342,Sonnleithnergasse 45, milannikolic@gmail.com,08.06.2023,15:00,1,1212,15:00,17:00
+Santiago,Johnson,03.09.92,15551234569,Vanilla Street,santiago.j@gmail.com,08.06.2023,18:45,3,24,18:45,20:45
