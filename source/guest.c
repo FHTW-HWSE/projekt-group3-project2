@@ -10,7 +10,7 @@ typedef struct {
     char reservation_date[10];
     char reservation_time[5];
     int num_guests;
-    char table_number[5];
-    char arrival[5];
+    char table_number[6];
+    char arrival[6];
     char departure[5];
 } guest;

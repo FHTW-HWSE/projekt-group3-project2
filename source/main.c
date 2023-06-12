@@ -21,7 +21,7 @@ int main(void) {
         guest new_guest;
         guest cancled_reservation;
         char arrival_table[5];
-        char arrival_time[5];
+        char arrival_time[6];
 
         case 'n':
             printf("Please enter name: ");
@@ -93,12 +93,22 @@ int main(void) {
 
             // Code for handling guests arrival
             read_reservations(guest_list, num_guests);
-            guest_departure(guest_list, num_guests, arrival_table, arrival_time);
+            guest_arrival(guest_list, num_guests, arrival_table, arrival_time);
             write_reservations(guest_list, num_guests);
             break;
 
         case 'l':
             // Code for handling guests departure
+            printf("Please enter table number: ");
+            scanf("%s", arrival_table);
+
+            printf("Please enter arrival time: ");
+            scanf("%s", arrival_time);
+
+            // Code for handling guests arrival
+            read_reservations(guest_list, num_guests);
+            guest_departure(guest_list, num_guests, arrival_table, arrival_time);
+            write_reservations(guest_list, num_guests);
             break;
 
         default:

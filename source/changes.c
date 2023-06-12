@@ -79,20 +79,19 @@ void delete_reservation(guest* guest_list, int num_guests, char* table_number){
 void guest_arrival(guest* guest_list, int num_guests, char* table_number, char* time){
     for(int i = 0; i < num_guests; i++) {
         if(strcmp(table_number, guest_list[i].table_number) == 0){
-            printf("found you\n");
-            for(int y = 0; y < 5; y++){
-                guest_list[i].arrival[y] = '\0';
+            for(int y = 0; y < 6; y++){
                 guest_list[i].arrival[y] = time[y];
             }
         }
-        break;
     }
 }
 
 void guest_departure(guest* guest_list, int num_guests, char* table_number, char* time){
     for(int i = 0; i < num_guests; i++) {
         if(strcmp(table_number, guest_list[i].table_number) == 0){
-            //guest_list[i].departure = time;
+            for(int y = 0; y < 6; y++){
+                guest_list[i].departure[y] = time[y];
+            }
         }
     }
 }
