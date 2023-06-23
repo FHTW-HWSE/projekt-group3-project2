@@ -9,6 +9,7 @@
 #include "changes.h"
 #include "user_validation.h"
 #include "reservation.h"
+#include "board_operations.h"
 
 void print_current_reservations(guest* guest_list, int num_guests) {
     time_t currentTime;

@@ -9,6 +9,8 @@
 #include "changes.h"
 #include "user_validation.h"
 #include "reservation.h"
+#include "board_operations.h"
+
 
 void write_user_data_to_csv(guest new_guest) { //new reservation
     // Open the CSV file for reading
