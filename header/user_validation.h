@@ -12,7 +12,7 @@
 #include "changes.h"
 #include "user_validation.h"
 #include "reservation.h"
-
+#include "board_operations.h"
 
 bool validatePhoneNumber(const char* phone);
 

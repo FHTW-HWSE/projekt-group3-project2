@@ -12,10 +12,14 @@
 #include "changes.h"
 #include "user_validation.h"
 #include "reservation.h"
+#include "board_operations.h"
 
 void print_current_reservations(guest* guest_list, int num_guests);
+
 void delete_reservation(guest* guest_list, int num_guests, char* table_number);
+
 void guest_arrival(guest* guest_list, int num_guests, char* table_number, char* time);
+
 void guest_departure(guest* guest_list, int num_guests, char* table_number, char* time);
 
 #endif
