@@ -5,7 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
+#include <ctype.h>
 #include "guest.h"
+#include "csv_operations.h"
+#include "changes.h"
+#include "user_validation.h"
+#include "reservation.h"
 
 void print_current_reservations(guest* guest_list, int num_guests);
 void delete_reservation(guest* guest_list, int num_guests, char* table_number);

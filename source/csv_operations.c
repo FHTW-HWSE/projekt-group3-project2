@@ -2,8 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
+#include <ctype.h>
 #include "guest.h"
 #include "csv_operations.h"
+#include "changes.h"
+#include "user_validation.h"
+#include "reservation.h"
 
 void write_user_data_to_csv(guest new_guest) { //new reservation
     // Open the CSV file for reading
