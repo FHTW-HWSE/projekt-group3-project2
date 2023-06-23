@@ -1,7 +1,7 @@
 #ifndef GUEST_H
 #define GUEST_H
 
-#define MAX_LEN 100
+#define MAX_LEN 300
 
 typedef struct {
     char name[MAX_LEN];
@@ -13,7 +13,7 @@ typedef struct {
     char reservation_date[11];
     char reservation_time[6];
     int num_guests;
-    int table_number;
+    char table_number[5];
     char arrival[6];
     char departure[6];
 } guest;

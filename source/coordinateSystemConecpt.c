@@ -162,6 +162,7 @@ int main() {
                 break;
             }
             case OPTION_WAITER: {
+                
                 if (!boardExists()) {
                     printf("There is no board. Log in as admin first to generate one.\n");
                     continue;

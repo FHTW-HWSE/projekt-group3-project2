@@ -1,5 +1,5 @@
-#ifndef CSV_OPERATIONS_H
-#define CSV_OPERATIONS_H
+#ifndef USER_VALIDATION_H
+#define USER_VALIDATION_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,8 +13,11 @@
 #include "user_validation.h"
 #include "reservation.h"
 
-void read_reservations(guest* guest_list, int num_guests);
-void write_user_data_to_csv(guest new_guest);
-void write_reservations(guest* guest_list, int num_guests);
+
+bool validatePhoneNumber(const char* phone);
+
+bool validateDate(const char* date);
+
+bool validateTime(const char* time);
 
 #endif
