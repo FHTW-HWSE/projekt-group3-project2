@@ -11,8 +11,8 @@
 #include "reservation.h"
 #include "board_operations.h"
 
-void reservation() {
-    int num_guests = 7;
+void reservation(int size) {
+    int num_guests = size * size;
 
     const char case_arrival = 'a';
     const char case_departure = 'l';
@@ -28,22 +28,27 @@ void reservation() {
     char user_input;
 
     while (1) {
+        system("clear");
         printf("user menu:\na = guests have arrived\nl = guests have left\nc = todays reservations\nn = new reservation\nd = delete reservation\nm = view restaurant\nb = back\nYour input: ");
         scanf(" %c", &user_input);
 
         switch (user_input) {
+            int row, col, choice;
             case case_new_guest: {
                 guest new_guest;
                 guest cancled_reservation;
                 char temp_table[5];
                 char temp_time[6];
-
+                system("clear");
+                
                 printf("Please enter name: ");
                 scanf("%s", new_guest.name);
-
+                system("clear");
+                
                 printf("Please enter surname: ");
                 scanf("%s", new_guest.surname);
-
+                system("clear");
+                
                 printf("Please enter birthday (format dd.mm.yyyy): ");
                 scanf("%10s", new_guest.birthday);
 
@@ -51,7 +56,8 @@ void reservation() {
                     printf("Invalid birthday format. Please enter again (format dd.mm.yyyy): ");
                     scanf("%10s", new_guest.birthday);
                 }
-
+                system("clear");
+                
                 printf("Please enter phone number (max 11 digits, only numbers): ");
                 scanf("%11s", new_guest.phone);
 
@@ -59,12 +65,15 @@ void reservation() {
                     printf("Invalid phone number format. Please enter again (max 11 digits, only numbers): ");
                     scanf("%11s", new_guest.phone);
                 }
-
+                system("clear");
+                
                 printf("Please enter address: ");
                 scanf(" %[^\n]%*c", new_guest.address);
-
+                system("clear");
+                
                 printf("Please enter email: ");
                 scanf("%s", new_guest.email);
+                system("clear");
 
                 printf("Please enter reservation date (format dd.mm.yyyy): ");
                 scanf("%10s", new_guest.reservation_date);
@@ -73,6 +82,7 @@ void reservation() {
                     printf("Invalid reservation date format. Please enter again (format dd.mm.yyyy): ");
                     scanf("%10s", new_guest.reservation_date);
                 }
+                system("clear");
 
                 printf("Please enter reservation time: ");
                 scanf("%5s", new_guest.reservation_time);
@@ -81,35 +91,52 @@ void reservation() {
                     printf("Invalid reservation time format. Please enter again (format hh:mm): ");
                     scanf("%5s", new_guest.reservation_time);
                 }
-
+                system("clear");
+                
                 printf("Please enter the number of guests (max 4): ");
-
                 scanf("%d", &new_guest.num_guests);
 
                 while (new_guest.num_guests > 4) {
                     printf("Invalid number of guests. Please enter again (max.4): ");
                     scanf("%d", &new_guest.num_guests);
                 }
-
+                system("clear");
+                
                 printf("Please enter table number: ");
                 scanf("%5s", new_guest.table_number);
-
+                
+                system("clear");
                 // Code for getting new reservation details and writing to the CSV file
                 write_user_data_to_csv(new_guest);
                 break;
             }
 
-            case case_todays_reservations:
+            case case_todays_reservations: {
                 // Read the guest reservations from the file
                 read_reservations(guest_list, num_guests);
-
+                system("clear");
                 // Print the current reservations
                 print_current_reservations(guest_list, num_guests);
+                while (1) {
+                    printf("Enter 0 0 to exit): ");
+                    row = getIntegerInput();
+                    col = getIntegerInput();
+
+                    if (row == 0 && col == 0) {
+                        printf("Waiter logged out. Saving the board...\n");
+                        break;
+                    }
+                }
+                system("clear");
+                break;
+
+            }
 
                 break;
 
             case case_delete_reservation: {
                 guest cancled_reservation;
+                system("clear");
                 printf("Please enter table number: ");
                 scanf("%s", cancled_reservation.table_number);
 
@@ -122,10 +149,11 @@ void reservation() {
             case case_arrival: {
                 char temp_table[5];
                 char temp_time[6];
-
+                system("clear");
                 printf("Please enter table number: ");
                 scanf("%s", temp_table);
-
+                
+                system("clear");
                 printf("Please enter arrival time: ");
                 scanf("%s", temp_time);
 
@@ -144,10 +172,11 @@ void reservation() {
             case case_departure: {
                 char temp_table[5];
                 char temp_time[6];
-
+                system("clear");
                 printf("Please enter table number: ");
                 scanf("%s", temp_table);
-
+                
+                system("clear");
                 printf("Please enter departure time: ");
                 scanf("%s", temp_time);
 
@@ -164,8 +193,9 @@ void reservation() {
             }
 
             case case_see_map: {
-                int size, row, col, choice;
                 char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
+                system("clear");
+                initializeBoard(board,size);
                 
                 int num_guests = 7;
                 guest* guest_list = calloc(num_guests, sizeof(guest));
@@ -189,7 +219,6 @@ void reservation() {
 
                     if (row == 0 && col == 0) {
                         printf("Waiter logged out. Saving the board...\n");
-                        saveBoard(board, size);
                         break;
                     }
                 }
@@ -198,6 +227,7 @@ void reservation() {
 
             case case_go_back:
                 free(guest_list);
+                system("clear");
                 return;
 
             default:
