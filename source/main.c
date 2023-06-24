@@ -14,7 +14,7 @@
 int main() {
     int size, row, col, choice;
     char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
-
+    system("clear");
     printf("The admin sets up the room and can mark unusable seats with an O, the waiter can reserve tables using X.\n");
 
     while (1) {
@@ -24,6 +24,7 @@ int main() {
 
         switch (choice) {
             case OPTION_ADMIN: {
+                system("clear");
                 if (boardExists()) {
                     deleteBoard();
                 }
@@ -69,7 +70,7 @@ int main() {
                 break;
             }
             case OPTION_WAITER: {
-                
+                system("clear");
                 if (!boardExists()) {
                     printf("There is no board. Log in as admin first to generate one.\n");
                     continue;
@@ -81,12 +82,13 @@ int main() {
                     return 0;
                 }
 
-                reservation();
+                reservation(size);
 
                 break;
 
             }
             case OPTION_EXIT: {
+                system("clear");
                 printf("Exiting the program...\n");
                 return 0;
             }

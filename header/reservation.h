@@ -14,6 +14,6 @@
 #include "reservation.h"
 #include "board_operations.h"
 
-void reservation();
+void reservation(int size);
 
 #endif
