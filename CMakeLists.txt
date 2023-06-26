@@ -33,6 +33,7 @@ add_executable(program_tests
   test/unittest_coordinate.cpp
   test/unittest_reservation.cpp
   test/unittest_changes.cpp
+  test/main.cpp
 )
 
 target_link_libraries(program_tests
