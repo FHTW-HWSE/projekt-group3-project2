@@ -9,21 +9,21 @@ include(Catch)
 
 # Create the library containing the code of the project
 add_library(program_library
-  src/board_operations.cpp
-  src/changes.cpp
-  src/coordinateSystemConcept.cpp
-  src/csv_operations.cpp
-  src/guest.cpp
-  src/main.cpp
-  src/reservation.cpp
-  src/reservation.csv
-  src/user_validation.cpp
-  include/board_operations.h
-  include/changes.h
-  include/csv_operations.h
-  include/guest.h
-  include/reservation.h
-  include/user_validation.h
+  source/board_operations.cpp
+  source/changes.cpp
+  source/coordinateSystemConcept.cpp
+  source/csv_operations.cpp
+  source/guest.cpp
+  source/main.cpp
+  source/reservation.cpp
+  source/reservation.csv
+  source/user_validation.cpp
+  header/board_operations.h
+  header/changes.h
+  header/csv_operations.h
+  header/guest.h
+  header/reservation.h
+  header/user_validation.h
 )
 
 target_include_directories(program_library PUBLIC include)
