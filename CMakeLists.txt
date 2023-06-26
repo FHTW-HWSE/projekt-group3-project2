@@ -32,7 +32,7 @@ target_include_directories(program_library PUBLIC include)
 add_executable(program_tests
   test/unittest_coordinate.cpp
   test/unittest_reservation.cpp
-  Test/unittest_changes.cpp
+  test/unittest_changes.cpp
 )
 
 target_link_libraries(program_tests
