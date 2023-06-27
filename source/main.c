@@ -322,28 +322,28 @@ int main() {
                             printf("Please enter table number: ");
                             scanf("%s", temp_table);
 
-                            int neighborsRow[] = { -1, 0, 1, 0 }; // Relative row positions of neighbors
-                            int neighborsCol[] = { 0, 1, 0, -1 }; // Relative column positions of neighbors
-                            int numNeighbors = 4; // Number of neighbors
+                            int neighborsRow[] = { -1, 0, 1, 0 };
+                            int neighborsCol[] = { 0, 1, 0, -1 };
+                            int numNeighbors = 4;
                             row = temp_table[0] - '0';
                             col = temp_table[1] - '0';
-
+                            
+                            system("clear");
+                            printf("Name:                          Surname:                       Tel:        Email:\n");
                             // Check each neighbor
                             for (int i = 0; i < numNeighbors; i++) {
                                 int newRow = row + neighborsRow[i];
                                 int newCol = col + neighborsCol[i];
 
-                                char comp_table[5]; // Changed the size to 3 to accommodate two digits and null terminator
+                                char comp_table[5];
 
                                 sprintf(comp_table, "%d%d", newRow, newCol);
-                                printf("New Table: %s\n", comp_table);
 
                                 for(int j = 0; j < num_guests; j++){
-                                    if(strcmp(guest_list[j].reservation_date, temp_date) == 0 && strcmp(guest_list[j].reservation_time, temp_time) == 0 && strcmp(guest_list[j].table_number, comp_table) == 0) {
-                                        
-                                        printf("%-30s %-30s %-12s %-12s\n", guest_list[i].name, guest_list[i].surname, 
-                                        guest_list[i].phone,guest_list[i].email);
+                                    if (strcmp(guest_list[j].reservation_date, temp_date) == 0 && strncmp(guest_list[j].reservation_time, temp_time, 5) == 0 && strcmp(guest_list[j].table_number, comp_table) == 0) {
+                                        printf("%-30s %-30s %-12s %-12s\n", guest_list[j].name, guest_list[j].surname, guest_list[j].phone, guest_list[j].email);
                                     }
+
                                 }
                             }
 
