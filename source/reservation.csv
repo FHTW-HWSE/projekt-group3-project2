@@ -2,6 +2,5 @@ Name,Surname,Birthday,Phone,Address,Email,Reservation_Date,Reservation_Time,Num_
 Lazar,Clark,12.02.85,15551234567,123 Main Street,lazar.clark@example.com,24.06.2023,14:45,3,11,14:45,15:45
 Boris,Smith,21.07.76,15551234568,456 Elm Street,boris.smith@example.com,07.06.2023,08:45,4,12,08:45,9:30
 Mihajlo,Erickson,09.11.88,15551234570,321 Maple Drive,mihajlo.erickson@example.com,08.06.2023,19:30,2,14,19:30,20:00
-Christian,Muster,12.10.96,6754938246,Wexstrasse 45,christimuster@gmail.com,08.06.2023,14:45,4,34,14:45,15:30
-Milan,Nikolic,19.07.2000,39489342,Sonnleithnergasse 45, milannikolic@gmail.com,24.06.2023,15:00,1,22,15:30,16:30
-Santiago,Johnson,03.09.92,15551234569,Vanilla Street,santiago.j@gmail.com,23.06.2023,18:45,2,24,18:45,19:30
+Christian,Muster,12.10.96,6754938246,Wexstrasse 45,christimuster@gmail.com,27.06.2023,18:45:45,4,23,18:45,19:30
+Santiago,Johnson,03.09.92,15551234569,Vanilla Street,santiago.j@gmail.com,27.06.2023,18:45,2,24,18:45,19:30
