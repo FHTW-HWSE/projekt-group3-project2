@@ -27,6 +27,15 @@ int main() {
                 if (boardExists()) {
                     deleteBoard();
                 }
+            
+                // Open the CSV file for reading
+                FILE* fp = fopen("reservation.csv", "w");
+                if (fp == NULL) {
+                    printf("Failed to open the file.\n");
+                    return 1; // Return error code
+                }
+                fclose(fp);
+
 
                 while (1) {
                     printf("Enter the size of the board (up to 9): ");
@@ -93,7 +102,7 @@ int main() {
                 strftime(current_date, sizeof(current_date), "%d.%m.%Y", localTime);
 
                 // Allocate memory for the guest_list array
-                guest* guest_list = calloc(num_guests, sizeof(guest));
+                guest* guest_list = static_cast<guest*>(calloc(num_guests, sizeof(guest)));
 
                 char user_input;
 
@@ -111,12 +120,10 @@ int main() {
 
                             printf("Please enter name: ");
                             scanf("%s", new_guest.name);
-                            //tolower(new_guest.name);
                             system("clear");
 
                             printf("Please enter surname: ");
                             scanf("%s", new_guest.surname);
-                            //tolower(new_guest.surname);
                             system("clear");
 
                             printf("Please enter birthday (format dd.mm.yyyy): ");
@@ -139,12 +146,10 @@ int main() {
 
                             printf("Please enter address: ");
                             scanf(" %[^\n]%*c", new_guest.address);
-                            //tolower(new_guest.address);
                             system("clear");
 
                             printf("Please enter email: ");
                             scanf("%s", new_guest.email);
-                            //tolower(new_guest.email);
                             system("clear");
 
                             printf("Please enter reservation date (format dd.mm.yyyy): ");
@@ -191,6 +196,19 @@ int main() {
                             
                             printf("\nPlease enter table number: ");
                             scanf("%5s", new_guest.table_number);
+                            // Assuming new_guest.table_number is a string with two characters representing row and column
+                            int tableRow = new_guest.table_number[0] - '0' - 1;
+                            int tableCol = new_guest.table_number[1] - '0' - 1;
+
+                            while (board[tableRow][tableCol] == 'O') {
+                                
+                                printf("Area cannot be reserved. Please choose another table.\n");
+                                printf("Please enter table number: ");
+                                scanf("%5s", new_guest.table_number);
+                                tableRow = new_guest.table_number[0] - '0' - 1;
+                                tableCol = new_guest.table_number[1] - '0' - 1;
+                            }
+
                             for(int i = 0; i < num_guests; i++){
                                 while (strcmp(guest_list[i].reservation_date, current_date) == 0 && strcmp(guest_list[i].table_number, new_guest.table_number) == 0) {
                                     printf("Table is already taken. Please choose another table : ");
@@ -198,7 +216,7 @@ int main() {
                                 }
                             }
 
-                            system("clear");
+                            //system("clear");
                             // Code for getting new reservation details and writing to the CSV file
                             write_user_data_to_csv(new_guest);
                             break;
