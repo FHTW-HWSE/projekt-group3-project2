@@ -29,7 +29,7 @@ int main() {
                 }
 
                 while (1) {
-                    printf("Enter the size of the board (up to 15): ");
+                    printf("Enter the size of the board (up to 9): ");
                     size = getIntegerInput();
 
                     if (size > MAX_BOARD_SIZE) {
@@ -174,10 +174,25 @@ int main() {
                             }
                             system("clear");
 
-                            printf("Please enter table number: ");
+                            char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
+                            loadBoard(board, &size);
+
+                            read_reservations(guest_list, num_guests);
+
+                            for(int i = 0; i < num_guests; i++){
+                                if (strcmp(guest_list[i].reservation_date, current_date) == 0) {
+                                    int row = guest_list[i].table_number[0] - '0' - 1;
+                                    int col = guest_list[i].table_number[1] - '0' - 1;
+                                    board[row][col] = 'X';
+                                }
+                            }
+
+                            displayBoard(board, size);
+                            
+                            printf("\nPlease enter table number: ");
                             scanf("%5s", new_guest.table_number);
                             for(int i = 0; i < num_guests; i++){
-                                while (strcmp(guest_list[i].reservation_date, current_date) == 0 && strcmp(guest_list[i].table_number, new_guest.table_number) == 0 && strcmp(guest_list[i].reservation_time, new_guest.reservation_time) == 0) {
+                                while (strcmp(guest_list[i].reservation_date, current_date) == 0 && strcmp(guest_list[i].table_number, new_guest.table_number) == 0) {
                                     printf("Table is already taken. Please choose another table : ");
                                     scanf("%5s", new_guest.table_number);
                                 }
@@ -272,7 +287,7 @@ int main() {
                         case 'm': {
                             char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
                             system("clear");
-                            initializeBoard(board, size);
+                            loadBoard(board, &size);
 
                             read_reservations(guest_list, num_guests);
 
@@ -285,7 +300,7 @@ int main() {
                             }
 
                             displayBoard(board, size);
-
+                            
                             while (1) {
                                 printf("Enter row and column (0 0 to exit): ");
                                 row = getIntegerInput();
