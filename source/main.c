@@ -82,15 +82,6 @@ int main() {
 
                 int num_guests = size * size;
 
-                const char case_arrival = 'a';
-                const char case_departure = 'l';
-                const char case_todays_reservations = 'c';
-                const char case_new_guest = 'n';
-                const char case_delete_reservation = 'd';
-                const char case_go_back = 'b';
-                const char case_see_map = 'm';
-                const char case_find_neighbors = 'f';
-
                 time_t currentTime;
                 struct tm* localTime;
                 char current_date[100];
@@ -113,7 +104,7 @@ int main() {
                     switch (user_input) {
                         int row, col, choice;
 
-                        case case_new_guest: {
+                        case 'n': {
                             read_reservations(guest_list, num_guests);
                             guest new_guest;
                             system("clear");
@@ -198,7 +189,7 @@ int main() {
                             break;
                         }
 
-                        case case_todays_reservations: {
+                        case 'c': {
                             // Read the guest reservations from the file
                             read_reservations(guest_list, num_guests);
                             system("clear");
@@ -219,7 +210,7 @@ int main() {
 
                         }
 
-                        case case_delete_reservation: {
+                        case 'd': {
                             //add Name and Date
                             guest canceled_reservation;
                             system("clear");
@@ -232,7 +223,7 @@ int main() {
                             break;
                         }
 
-                        case case_arrival: {
+                        case 'a': {
                             char temp_table[5];
                             char temp_time[6];
                             system("clear");
@@ -255,7 +246,7 @@ int main() {
                             break;
                         }
 
-                        case case_departure: {
+                        case 'l': {
                             char temp_table[5];
                             char temp_time[6];
                             system("clear");
@@ -278,7 +269,7 @@ int main() {
                             break;
                         }
 
-                        case case_see_map: {
+                        case 'm': {
                             char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
                             system("clear");
                             initializeBoard(board, size);
@@ -302,13 +293,14 @@ int main() {
 
                                 if (row == 0 && col == 0) {
                                     printf("Waiter logged out. Saving the board...\n");
+                                    system("clear");
                                     break;
                                 }
                             }
                             break;
                         }
 
-                        case case_find_neighbors: {
+                        case 'f': {
                             char temp_table[5];
                             char temp_time[5];
                             char temp_date[10];
@@ -362,7 +354,7 @@ int main() {
                             break;
                         }
 
-                        case case_go_back: {
+                        case 'b': {
                             system("clear");
                             break;                  
                         }
