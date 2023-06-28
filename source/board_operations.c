@@ -10,7 +10,7 @@
 #include "user_validation.h"
 #include "board_operations.h"
 
-#define MAX_BOARD_SIZE 15
+#define MAX_BOARD_SIZE 9
 #define OPTION_ADMIN 1
 #define OPTION_WAITER 2
 #define OPTION_EXIT 3
