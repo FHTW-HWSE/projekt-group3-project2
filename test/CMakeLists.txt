@@ -14,7 +14,7 @@ add_library(program_library
   source/csv_operations.cpp
   source/guest.cpp
   source/main.cpp
-  reservation.csv
+  reservation/reservation.csv
   source/user_validation.cpp
   header/board_operations.h
   header/changes.h
