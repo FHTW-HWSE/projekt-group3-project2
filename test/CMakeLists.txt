@@ -11,18 +11,15 @@ include(Catch)
 add_library(program_library
   source/board_operations.cpp
   source/changes.cpp
-  source/coordinateSystemConcept.cpp
   source/csv_operations.cpp
   source/guest.cpp
   source/main.cpp
-  source/reservation.cpp
-  source/reservation.csv
+  reservation/reservation.csv
   source/user_validation.cpp
   header/board_operations.h
   header/changes.h
   header/csv_operations.h
   header/guest.h
-  header/reservation.h
   header/user_validation.h
 )
 
