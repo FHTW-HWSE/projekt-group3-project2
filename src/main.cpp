@@ -10,6 +10,12 @@
 #include "user_validation.h"
 #include "board_operations.h"
 
+void convertToLowercase(char* str) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
+
 int main() {
     int size, row, col, choice;
     char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
@@ -28,14 +34,12 @@ int main() {
                     deleteBoard();
                 }
             
-                // Open the CSV file for reading
                 FILE* fp = fopen("reservation.csv", "w");
                 if (fp == NULL) {
                     printf("Failed to open the file.\n");
-                    return 1; // Return error code
+                    return 1;
                 }
                 fclose(fp);
-
 
                 while (1) {
                     printf("Enter the size of the board (up to 9): ");
@@ -71,7 +75,6 @@ int main() {
                         printf("Spot already marked. Try again.\n");
                         continue;
                     }
-
                     makeMove(board, row - 1, col - 1, 'O');
                     displayBoard(board, size);
                 }
@@ -94,14 +97,9 @@ int main() {
                 time_t currentTime;
                 struct tm* localTime;
                 char current_date[100];
-                // Get the current time
                 currentTime = time(NULL);
-                // Convert the current time to the local time
                 localTime = localtime(&currentTime);
-                // Format the current time as a string
                 strftime(current_date, sizeof(current_date), "%d.%m.%Y", localTime);
-
-                // Allocate memory for the guest_list array
                 guest* guest_list = static_cast<guest*>(calloc(num_guests, sizeof(guest)));
 
                 char user_input;
@@ -109,9 +107,10 @@ int main() {
                 while (1) {
                     printf("user menu:\na = guests have arrived\nl = guests have left\nc = todays reservations\nn = new reservation\nd = delete reservation\nm = view restaurant\nf = find neighbors\nb = back\nYour input: ");
                     scanf(" %c", &user_input);
+					convertToLowercase(&user_input);
 
                     switch (user_input) {
-                        int row, col, choice;
+                        int row, col;
 
                         case 'n': {
                             read_reservations(guest_list, num_guests);
@@ -120,10 +119,12 @@ int main() {
 
                             printf("Please enter name: ");
                             scanf("%s", new_guest.name);
+							convertToLowercase(new_guest.name);
                             system("clear");
 
                             printf("Please enter surname: ");
                             scanf("%s", new_guest.surname);
+							convertToLowercase(new_guest.surname);
                             system("clear");
 
                             printf("Please enter birthday (format dd.mm.yyyy): ");
@@ -135,7 +136,7 @@ int main() {
                             }
                             system("clear");
 
-                            printf("Please enter phone number (max 11 digits, only numbers): ");
+                            printf("Please enter phone number: ");
                             scanf("%11s", new_guest.phone);
 
                             while (!validatePhoneNumber(new_guest.phone)) {
@@ -146,10 +147,12 @@ int main() {
 
                             printf("Please enter address: ");
                             scanf(" %[^\n]%*c", new_guest.address);
+							convertToLowercase(new_guest.address);
                             system("clear");
 
                             printf("Please enter email: ");
                             scanf("%s", new_guest.email);
+							convertToLowercase(new_guest.email);
                             system("clear");
 
                             printf("Please enter reservation date (format dd.mm.yyyy): ");
@@ -181,7 +184,6 @@ int main() {
 
                             char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
                             loadBoard(board, &size);
-
                             read_reservations(guest_list, num_guests);
 
                             for(int i = 0; i < num_guests; i++){
@@ -193,15 +195,12 @@ int main() {
                             }
 
                             displayBoard(board, size);
-                            
                             printf("\nPlease enter table number: ");
                             scanf("%5s", new_guest.table_number);
-                            // Assuming new_guest.table_number is a string with two characters representing row and column
                             int tableRow = new_guest.table_number[0] - '0' - 1;
                             int tableCol = new_guest.table_number[1] - '0' - 1;
 
                             while (board[tableRow][tableCol] == 'O') {
-                                
                                 printf("Area cannot be reserved. Please choose another table.\n");
                                 printf("Please enter table number: ");
                                 scanf("%5s", new_guest.table_number);
@@ -215,18 +214,13 @@ int main() {
                                     scanf("%5s", new_guest.table_number);
                                 }
                             }
-
-                            //system("clear");
-                            // Code for getting new reservation details and writing to the CSV file
                             write_user_data_to_csv(new_guest);
                             break;
                         }
 
                         case 'c': {
-                            // Read the guest reservations from the file
                             read_reservations(guest_list, num_guests);
                             system("clear");
-                            // Print the current reservations
                             print_current_reservations(guest_list, num_guests);
                             while (1) {
                                 printf("Enter 0 0 to exit): ");
@@ -240,16 +234,13 @@ int main() {
                             }
                             system("clear");
                             break;
-
                         }
 
                         case 'd': {
-                            //add Name and Date
                             guest canceled_reservation;
                             system("clear");
                             printf("Please enter table number: ");
                             scanf("%s", canceled_reservation.table_number);
-
                             read_reservations(guest_list, num_guests);
                             delete_reservation(guest_list, num_guests, canceled_reservation.table_number);
                             write_reservations(guest_list, num_guests);
@@ -271,8 +262,6 @@ int main() {
                                 printf("Invalid reservation time format. Please enter again (format hh:mm): ");
                                 scanf("%5s", temp_time);
                             }
-
-                            // Code for handling guests arrival
                             read_reservations(guest_list, num_guests);
                             guest_arrival(guest_list, num_guests, temp_table, temp_time);
                             write_reservations(guest_list, num_guests);
@@ -294,8 +283,6 @@ int main() {
                                 printf("Invalid reservation time format. Please enter again (format hh:mm): ");
                                 scanf("%5s", temp_time);
                             }
-
-                            // Code for handling guests departure
                             read_reservations(guest_list, num_guests);
                             guest_departure(guest_list, num_guests, temp_table, temp_time);
                             write_reservations(guest_list, num_guests);
@@ -355,7 +342,6 @@ int main() {
                             
                             system("clear");
                             printf("Name:                          Surname:                       Tel:        Email:\n");
-                            // Check each neighbor
                             for (int i = 0; i < numNeighbors; i++) {
                                 int newRow = row + neighborsRow[i];
                                 int newCol = col + neighborsCol[i];
@@ -368,12 +354,10 @@ int main() {
                                     if (strcmp(guest_list[j].reservation_date, temp_date) == 0 && strncmp(guest_list[j].reservation_time, temp_time, 5) == 0 && strcmp(guest_list[j].table_number, comp_table) == 0) {
                                         printf("%-30s %-30s %-12s %-12s\n", guest_list[j].name, guest_list[j].surname, guest_list[j].phone, guest_list[j].email);
                                     }
-
                                 }
                             }
 
                             while (1) {
-
                                 printf("Enter 0 0 to exit): ");
                                 row = getIntegerInput();
                                 col = getIntegerInput();
@@ -412,4 +396,3 @@ int main() {
         }
     }
 }
-
