@@ -1,8 +1,17 @@
+#include <catch2/catch.hpp>
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include "guest.h"
+#include "csv_operations.h"
+#include "changes.h"
+#include "user_validation.h"
+#include "board_operations.h"
 
-#define MAX_SIZE 15
+#define MAX_BOARD_SIZE 9
 
 // Function prototypes
 void test_initializeBoard();
@@ -15,7 +24,7 @@ void test_boardExists();
 // Unit test for initializeBoard
 void test_initializeBoard() {
     // Create a sample board
-    char board[MAX_SIZE][MAX_SIZE];
+    char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
 
     // Call the function
     initializeBoard(board, 3);
@@ -31,7 +40,7 @@ void test_initializeBoard() {
 // Unit test for isValidMove
 void test_isValidMove() {
     // Create a sample board
-    char board[MAX_SIZE][MAX_SIZE] = {
+    char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE] = {
         { '-', '-', '-' },
         { '-', '-', '-' },
         { '-', '-', '-' }
@@ -54,7 +63,7 @@ void test_isValidMove() {
 // Unit test for makeMove
 void test_makeMove() {
     // Create a sample board
-    char board[MAX_SIZE][MAX_SIZE] = {
+    char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE] = {
         { '-', '-', '-' },
         { '-', '-', '-' },
         { '-', '-', '-' }
@@ -70,7 +79,7 @@ void test_makeMove() {
 // Unit test for saveBoard
 void test_saveBoard() {
     // Create a sample board
-    char board[MAX_SIZE][MAX_SIZE] = {
+    char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE] = {
         { '-', '-', '-' },
         { '-', '-', '-' },
         { '-', '-', '-' }
@@ -81,7 +90,7 @@ void test_saveBoard() {
 
     // Load the board from the file
     int size;
-    char loadedBoard[MAX_SIZE][MAX_SIZE];
+    char loadedBoard[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
     loadBoard(loadedBoard, &size);
 
     // Assertion: The loaded board should be equal to the original board
@@ -95,7 +104,7 @@ void test_saveBoard() {
 // Unit test for loadBoard
 void test_loadBoard() {
     // Create a sample board
-    char board[MAX_SIZE][MAX_SIZE] = {
+    char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE] = {
         { '-', '-', '-' },
         { '-', '-', '-' },
         { '-', '-', '-' }
@@ -106,7 +115,7 @@ void test_loadBoard() {
 
     // Create a new board and load the saved board
     int size;
-    char loadedBoard[MAX_SIZE][MAX_SIZE];
+    char loadedBoard[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
     loadBoard(loadedBoard, &size);
 
     // Assertion: The loaded board should be equal to the original board
@@ -123,7 +132,7 @@ void test_boardExists() {
     assert(!boardExists());
 
     // Create a sample board
-    char board[MAX_SIZE][MAX_SIZE] = {
+    char board[MAX_BOARD_SIZE][MAX_BOARD_SIZE] = {
         { '-', '-', '-' },
         { '-', '-', '-' },
         { '-', '-', '-' }

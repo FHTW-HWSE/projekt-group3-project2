@@ -11,18 +11,15 @@ include(Catch)
 add_library(program_library
   src/board_operations.cpp
   src/changes.cpp
-  src/coordinateSystemConcept.cpp
   src/csv_operations.cpp
   src/guest.cpp
   src/main.cpp
-  src/reservation.cpp
-  src/reservation.csv
+  reservation/reservation.csv
   src/user_validation.cpp
   include/board_operations.h
   include/changes.h
   include/csv_operations.h
   include/guest.h
-  include/reservation.h
   include/user_validation.h
 )
 
@@ -44,7 +41,7 @@ catch_discover_tests(program_tests)
 
 # Create program executable
 add_executable(program
-  main.cpp
+  src/main.cpp
 )
 
 target_link_libraries(program
