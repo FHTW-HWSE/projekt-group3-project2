@@ -1,2 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libprogram_library.a CMakeFiles/program_library.dir/src/board_operations.cpp.o CMakeFiles/program_library.dir/src/changes.cpp.o CMakeFiles/program_library.dir/src/csv_operations.cpp.o CMakeFiles/program_library.dir/src/guest.cpp.o CMakeFiles/program_library.dir/src/main.cpp.o CMakeFiles/program_library.dir/src/user_validation.cpp.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libprogram_library.a
