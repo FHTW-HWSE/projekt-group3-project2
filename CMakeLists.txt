@@ -6,6 +6,9 @@ find_package(Catch2 REQUIRED)
 
 include(CTest)
 include(Catch)
+include_directories(catch2)
+include_directories(include)
+include_directories(reservation)
 
 # Create the library containing the code of the project
 add_library(program_library
