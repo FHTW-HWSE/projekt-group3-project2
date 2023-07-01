@@ -25,14 +25,23 @@ add_library(program_library
 
 target_include_directories(program_library PUBLIC include)
 
-target_link_libraries(
+# Create test executable
+add_executable(program_tests
+  test/unittest_coordinate.cpp
+  test/unittest_reservation.cpp
+  test/unittest_changes.cpp
+  test/main.cpp
+)
+
+target_link_libraries(program_tests
   program_library
 )
 
+catch_discover_tests(program_tests)
 
 # Create program executable
 add_executable(program
-  src/main.cpp
+  main.cpp
 )
 
 target_link_libraries(program
