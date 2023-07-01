@@ -66,8 +66,17 @@ When: Ich suche nach einer Kontaktperson, die einen Tisch reserviert hat.
 Then: Das System zeigt mir alle Kontakte der Personen, die in der Nähe dieses Tisches gesessen waren.
 ```
 
+### Projektdokumentation
+Zuallererst wurden alle genannten Eigenschaften aus diesem Dokument analysiert, nochmals wiederholt und anschließend ein detailierter Step-by-Step Plan entworfen, wie unsere Gruppe genau vorgehen wird. 
+
+Nach einiger Zeit kamen wir auf die Idee, dass wir bestimmte Funktionen bzw. Teile unserer Abschlussprojekte aus dem ersten Semester (z.B. Minesweeper, Tic-tac-Toe, etc.) übernehmen und hier einbauen können. Natürlich hatten wir dadurch ab und zu gewisse Schwierigkeiten zu bewältigen, welche allerdings im Endeffekt gelöst werden konnten. 
+
+Während sich das Projekt stetig weiterentwickelte, entschieden wir uns dafür, dass wir bestimmte Aufgaben nicht mehr wie bisher gemeinsam untersuchen und erfüllen, sondern pro Gruppenmitglied aufteilen. Dadurch konnten wir insgesamt  unsere Ziele effizienter bzw. effektiver erreichen.  
+
+Unser Projekt ist ein Reservierungssystem für die Gastronomie. Mithilfe dessen können größere Restaurants, aber auch kleine Lokale alles im Überblick behalten. Einige Beispielfunktionalitäten dieses Programms sind die Möglichkeit, die genaue Form des Restaurants einzugeben, da ja nicht jedes die gleiche Form besitzt, Reservierungen hinzuzufügen, zu überprüfen, aber auch zu entfernen, sowie bestimmte Informationen nachzuschlagen oder zu kontrollieren. 
+
 ### Authors
 - Mihajlo Djordjevic
 - Lazar Zivkovic
-- Santiago Fernandez Segura
 - Boris Maksimovic
+- Santiago Fernandez Segura
