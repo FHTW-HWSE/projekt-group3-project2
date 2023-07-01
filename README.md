@@ -75,6 +75,21 @@ Während sich das Projekt stetig weiterentwickelte, entschieden wir uns dafür, 
 
 Unser Projekt ist ein Reservierungssystem für die Gastronomie. Mithilfe dessen können größere Restaurants, aber auch kleine Lokale alles im Überblick behalten. Einige Beispielfunktionalitäten dieses Programms sind die Möglichkeit, die genaue Form des Restaurants einzugeben, da ja nicht jedes die gleiche Form besitzt, Reservierungen hinzuzufügen, zu überprüfen, aber auch zu entfernen, sowie bestimmte Informationen nachzuschlagen oder zu kontrollieren. 
 
+### Compiliervorgang
+Clone the repository to your local machine using Git:
+git clone https://github.com/FHTW-HWSE/projekt-group3-project2.git
+•	Change into the project directory:
+cd projekt-group3-project2
+•	Create a build directory and navigate into it:
+mkdir build
+cd build
+•	Generate the build files using CMake:
+cmake ..
+•	Make:
+make
+•	Run the program:
+./program
+
 ### Authors
 - Mihajlo Djordjevic
 - Lazar Zivkovic
