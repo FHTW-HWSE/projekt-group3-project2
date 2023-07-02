@@ -22,16 +22,16 @@ TEST_CASE("Write user data to CSV1")
         guest new_guest;
         strcpy(new_guest.name, "John");
         strcpy(new_guest.surname, "Doe");
-        strcpy(new_guest.birthday, "1990-01-01");
+        strcpy(new_guest.birthday, "12.12.2000");
         strcpy(new_guest.phone, "123456789");
         strcpy(new_guest.address, "123 Main St");
         strcpy(new_guest.email, "john.doe@example.com");
-        strcpy(new_guest.reservation_date, "2023-07-01");
+        strcpy(new_guest.reservation_date, "03.07.2023");
         strcpy(new_guest.reservation_time, "18:00");
         new_guest.num_guests = 4;
-        strcpy(new_guest.table_number, "A1");
-        strcpy(new_guest.arrival, "2023-07-01");
-        strcpy(new_guest.departure, "2023-07-02");
+        strcpy(new_guest.table_number, "11");
+        strcpy(new_guest.arrival, "18:00");
+        strcpy(new_guest.departure, "20:00");
 
         // Redirect stdout to a stringstream to capture the output
         std::stringstream output;
@@ -53,16 +53,16 @@ TEST_CASE("Write user data to CSV1")
         // Check if the saved reservation matches the original reservation
         REQUIRE(strcmp(guest_list[0].name, "John") == 0);
         REQUIRE(strcmp(guest_list[0].surname, "Doe") == 0);
-        REQUIRE(strcmp(guest_list[0].birthday, "1990-01-01") == 0);
+        REQUIRE(strcmp(guest_list[0].birthday, "12.12.2000") == 0);
         REQUIRE(strcmp(guest_list[0].phone, "123456789") == 0);
         REQUIRE(strcmp(guest_list[0].address, "123 Main St") == 0);
         REQUIRE(strcmp(guest_list[0].email, "john.doe@example.com") == 0);
-        REQUIRE(strcmp(guest_list[0].reservation_date, "2023-07-01") == 0);
+        REQUIRE(strcmp(guest_list[0].reservation_date, "03.07.2023") == 0);
         REQUIRE(strcmp(guest_list[0].reservation_time, "18:00") == 0);
         REQUIRE(guest_list[0].num_guests == 4);
-        REQUIRE(strcmp(guest_list[0].table_number, "A1") == 0);
-        REQUIRE(strcmp(guest_list[0].arrival, "2023-07-01") == 0);
-        REQUIRE(strcmp(guest_list[0].departure, "2023-07-02") == 0);
+        REQUIRE(strcmp(guest_list[0].table_number, "11") == 0);
+        REQUIRE(strcmp(guest_list[0].arrival, "18:00") == 0);
+        REQUIRE(strcmp(guest_list[0].departure, "20:00") == 0);
     }
 }
 
@@ -74,29 +74,29 @@ TEST_CASE("Read and write reservations1")
         guest guest_list[2];
         strcpy(guest_list[0].name, "John");
         strcpy(guest_list[0].surname, "Doe");
-        strcpy(guest_list[0].birthday, "1990-01-01");
+        strcpy(guest_list[0].birthday, "12.12.2000");
         strcpy(guest_list[0].phone, "123456789");
         strcpy(guest_list[0].address, "123 Main St");
         strcpy(guest_list[0].email, "john.doe@example.com");
-        strcpy(guest_list[0].reservation_date, "2023-07-01");
+        strcpy(guest_list[0].reservation_date, "03.07.2023");
         strcpy(guest_list[0].reservation_time, "18:00");
         guest_list[0].num_guests = 4;
-        strcpy(guest_list[0].table_number, "A1");
-        strcpy(guest_list[0].arrival, "2023-07-01");
-        strcpy(guest_list[0].departure, "2023-07-02");
+        strcpy(guest_list[0].table_number, "11");
+        strcpy(guest_list[0].arrival, "18:00");
+        strcpy(guest_list[0].departure, "20:00");
 
         strcpy(guest_list[1].name, "Jane");
         strcpy(guest_list[1].surname, "Smith");
-        strcpy(guest_list[1].birthday, "1992-05-15");
+        strcpy(guest_list[1].birthday, "11.11.1999");
         strcpy(guest_list[1].phone, "987654321");
         strcpy(guest_list[1].address, "456 Oak St");
         strcpy(guest_list[1].email, "jane.smith@example.com");
-        strcpy(guest_list[1].reservation_date, "2023-07-02");
+        strcpy(guest_list[1].reservation_date, "03.07.2023");
         strcpy(guest_list[1].reservation_time, "19:00");
         guest_list[1].num_guests = 2;
-        strcpy(guest_list[1].table_number, "B2");
-        strcpy(guest_list[1].arrival, "2023-07-02");
-        strcpy(guest_list[1].departure, "2023-07-03");
+        strcpy(guest_list[1].table_number, "12");
+        strcpy(guest_list[1].arrival, "19:00");
+        strcpy(guest_list[1].departure, "20:00");
 
         // Write the guest reservations to the file
         write_reservations(guest_list, 2);
@@ -108,29 +108,29 @@ TEST_CASE("Read and write reservations1")
         // Check if the read guest reservations match the original guest reservations
         REQUIRE(strcmp(read_guest_list[0].name, "John") == 0);
         REQUIRE(strcmp(read_guest_list[0].surname, "Doe") == 0);
-        REQUIRE(strcmp(read_guest_list[0].birthday, "1990-01-01") == 0);
+        REQUIRE(strcmp(read_guest_list[0].birthday, "12.12.2000") == 0);
         REQUIRE(strcmp(read_guest_list[0].phone, "123456789") == 0);
         REQUIRE(strcmp(read_guest_list[0].address, "123 Main St") == 0);
         REQUIRE(strcmp(read_guest_list[0].email, "john.doe@example.com") == 0);
-        REQUIRE(strcmp(read_guest_list[0].reservation_date, "2023-07-01") == 0);
+        REQUIRE(strcmp(read_guest_list[0].reservation_date, "03.07.2023") == 0);
         REQUIRE(strcmp(read_guest_list[0].reservation_time, "18:00") == 0);
         REQUIRE(read_guest_list[0].num_guests == 4);
-        REQUIRE(strcmp(read_guest_list[0].table_number, "A1") == 0);
-        REQUIRE(strcmp(read_guest_list[0].arrival, "2023-07-01") == 0);
-        REQUIRE(strcmp(read_guest_list[0].departure, "2023-07-02") == 0);
+        REQUIRE(strcmp(read_guest_list[0].table_number, "11") == 0);
+        REQUIRE(strcmp(read_guest_list[0].arrival, "18:00") == 0);
+        REQUIRE(strcmp(read_guest_list[0].departure, "20:00") == 0);
 
         REQUIRE(strcmp(read_guest_list[1].name, "Jane") == 0);
         REQUIRE(strcmp(read_guest_list[1].surname, "Smith") == 0);
-        REQUIRE(strcmp(read_guest_list[1].birthday, "1992-05-15") == 0);
+        REQUIRE(strcmp(read_guest_list[1].birthday, "11.11.1999") == 0);
         REQUIRE(strcmp(read_guest_list[1].phone, "987654321") == 0);
         REQUIRE(strcmp(read_guest_list[1].address, "456 Oak St") == 0);
         REQUIRE(strcmp(read_guest_list[1].email, "jane.smith@example.com") == 0);
-        REQUIRE(strcmp(read_guest_list[1].reservation_date, "2023-07-02") == 0);
+        REQUIRE(strcmp(read_guest_list[1].reservation_date, "03.07.2023") == 0);
         REQUIRE(strcmp(read_guest_list[1].reservation_time, "19:00") == 0);
         REQUIRE(read_guest_list[1].num_guests == 2);
-        REQUIRE(strcmp(read_guest_list[1].table_number, "B2") == 0);
-        REQUIRE(strcmp(read_guest_list[1].arrival, "2023-07-02") == 0);
-        REQUIRE(strcmp(read_guest_list[1].departure, "2023-07-03") == 0);
+        REQUIRE(strcmp(read_guest_list[1].table_number, "12") == 0);
+        REQUIRE(strcmp(read_guest_list[1].arrival, "19:00") == 0);
+        REQUIRE(strcmp(read_guest_list[1].departure, "20:00") == 0);
     }
 }
 
@@ -138,9 +138,9 @@ TEST_CASE("Print current reservations1")
 {
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
-    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
-    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
+    guest_list[0] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
+    guest_list[1] = guest{"Jane", "Smith", "11.11.1999", "987654321", "456 Oak St", "jane.smith@example.com", "03.07.2023", "19:00", 2, "12", "19:00", "20:00"};
+    guest_list[2] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
 
     SECTION("Reservations on the current date")
     {
@@ -156,8 +156,8 @@ TEST_CASE("Print current reservations1")
         // Check the captured output
         std::string expectedOutput =
             "Name:                          Surname:                       Time:        Table:       Guests:\n"
-            "John                          Doe                            12:00        A01          4\n"
-            "Jane                          Smith                          13:00        B02          2\n";
+            "John                          Doe                            18:00        11          4\n"
+            "Jane                          Smith                          19:00        12          2\n";
         REQUIRE(output.str() == expectedOutput);
     }
 
@@ -183,13 +183,13 @@ TEST_CASE("Delete reservation1")
 {
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
-    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
-    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
+    guest_list[0] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
+    guest_list[1] = guest{"Jane", "Smith", "11.11.1999", "987654321", "456 Oak St", "jane.smith@example.com", "03.07.2023", "19:00", 2, "12", "19:00", "20:00"};
+    guest_list[2] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
 
     SECTION("Delete an existing reservation")
     {
-        delete_reservation(guest_list, 3, "B02");
+        delete_reservation(guest_list, 3, "12");
 
         // Check if the reservation is deleted
         REQUIRE(guest_list[1].name[0] == '\0');
@@ -202,7 +202,7 @@ TEST_CASE("Delete reservation1")
 
     SECTION("Delete a non-existing reservation")
     {
-        delete_reservation(guest_list, 3, "D04");
+        delete_reservation(guest_list, 3, "22");
 
         // Check if the guest list remains unchanged
         REQUIRE(std::strcmp(guest_list[0].name, "John") == 0);
@@ -215,13 +215,13 @@ TEST_CASE("Guest arrival1")
 {
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
-    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
-    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
+    guest_list[0] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
+    guest_list[1] = guest{"Jane", "Smith", "11.11.1999", "987654321", "456 Oak St", "jane.smith@example.com", "03.07.2023", "19:00", 2, "12", "19:00", "20:00"};
+    guest_list[2] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
 
     SECTION("Guest arrives at an existing reservation")
     {
-        guest_arrival(guest_list, 3, "B02", "12:30");
+        guest_arrival(guest_list, 3, "12", "12:30");
 
         // Check if the arrival time is updated
         REQUIRE(std::strcmp(guest_list[1].arrival, "12:30") == 0);
@@ -229,7 +229,7 @@ TEST_CASE("Guest arrival1")
 
     SECTION("Guest arrives at a non-existing reservation")
     {
-        guest_arrival(guest_list, 3, "D04", "12:30");
+        guest_arrival(guest_list, 3, "22", "12:30");
 
         // Check if the guest list remains unchanged
         REQUIRE(std::strcmp(guest_list[0].arrival, "") == 0);
@@ -242,13 +242,13 @@ TEST_CASE("Guest departure1")
 {
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
-    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
-    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
+    guest_list[0] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
+    guest_list[1] = guest{"Jane", "Smith", "11.11.1999", "987654321", "456 Oak St", "jane.smith@example.com", "03.07.2023", "19:00", 2, "12", "19:00", "20:00"};
+    guest_list[2] = guest{"John", "Doe", "12.12.2000", "123456789", "123 Main St", "john.doe@example.com", "03.07.2023", "18:00", 4, "11", "18:00", "20:00"};
 
     SECTION("Guest departs from an existing reservation")
     {
-        guest_departure(guest_list, 3, "B02", "14:30");
+        guest_departure(guest_list, 3, "12", "14:30");
 
         // Check if the departure time is updated
         REQUIRE(std::strcmp(guest_list[1].departure, "14:30") == 0);
@@ -256,7 +256,7 @@ TEST_CASE("Guest departure1")
 
     SECTION("Guest departs from a non-existing reservation")
     {
-        guest_departure(guest_list, 3, "D04", "14:30");
+        guest_departure(guest_list, 3, "22", "14:30");
 
         // Check if the guest list remains unchanged
         REQUIRE(std::strcmp(guest_list[0].departure, "") == 0);
