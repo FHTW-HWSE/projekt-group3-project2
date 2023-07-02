@@ -2,9 +2,17 @@
 #include <catch2/catch.hpp>
 #include <cstring>
 #include <cstdio>
-#include "../src/guest.cpp"
-#include "../unittests/board_operations.h"
-#include "../unittests/csv_operations.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include "guest.h"
+#include "csv_operations.h"
+#include "changes.h"
+#include "user_validation.h"
+#include "board_operations.h"
 
 TEST_CASE("Write user data to CSV") {
     SECTION("Write new guest reservation") {

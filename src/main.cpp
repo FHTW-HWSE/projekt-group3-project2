@@ -214,6 +214,10 @@ int main() {
                                     scanf("%5s", new_guest.table_number);
                                 }
                             }
+
+                            new_guest.arrival[0] = '0';
+                            new_guest.departure[0] = '0';
+
                             write_user_data_to_csv(new_guest);
                             break;
                         }

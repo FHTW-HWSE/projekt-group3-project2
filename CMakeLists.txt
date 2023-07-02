@@ -12,23 +12,23 @@ add_library(program_library
   src/board_operations.cpp
   src/changes.cpp
   src/csv_operations.cpp
-  src/guest.cpp
   src/main.cpp
-  reservation/reservation.csv
   src/user_validation.cpp
-  include/board_operations.h
-  include/changes.h
-  include/csv_operations.h
-  include/guest.h
-  include/user_validation.h
+  reservation/reservation.csv
 )
 
 target_include_directories(program_library PUBLIC include)
 
-target_link_libraries(
+# Create test executable
+add_executable(program_tests
+  test/unit_tests.cpp
+)
+
+target_link_libraries(program_tests
   program_library
 )
 
+catch_discover_tests(program_tests)
 
 # Create program executable
 add_executable(program
