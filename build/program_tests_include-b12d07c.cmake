@@ -1,5 +1,0 @@
-if(EXISTS "/Users/macbook/Documents/FH/HWSE/projekt-group3-project2/build/program_tests_tests-b12d07c.cmake")
-  include("/Users/macbook/Documents/FH/HWSE/projekt-group3-project2/build/program_tests_tests-b12d07c.cmake")
-else()
-  add_test(program_tests_NOT_BUILT-b12d07c program_tests_NOT_BUILT-b12d07c)
-endif()
