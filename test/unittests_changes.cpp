@@ -1,4 +1,6 @@
-#define CATCH_CONFIG_MAIN
+// #define CATCH_CONFIG_MAIN
+#include <iostream>
+#include <sstream>
 #include <catch.hpp>
 #include <cstring>
 #include <stdio.h>
@@ -13,17 +15,19 @@
 #include "user_validation.h"
 #include "board_operations.h"
 
-TEST_CASE("Print current reservations") {
+TEST_CASE("Print current reservations2", "[current_reservations]")
+{
     // Create a sample guest list
-    guest* guest_list = static_cast<guest*>(calloc(3, sizeof(guest)));
-    guest_list[0] = {"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
-    guest_list[1] = {"Boris", "Smith", "21.07.1976", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
-    guest_list[2] = {"Christian", "Muster", "12.10.1996", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023" , "18:45",4,"23", "18:45", "19:30"};
+    guest *guest_list = static_cast<guest *>(calloc(3, sizeof(guest)));
+    guest_list[0] = guest{"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
+    guest_list[1] = guest{"Boris", "Smith", "21.07.1976", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
+    guest_list[2] = guest{"Christian", "Muster", "12.10.1996", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023", "18:45", 4, "23", "18:45", "19:30"};
 
-    SECTION("Reservations on the current date") {
+    SECTION("Reservations on the current date")
+    {
         // Redirect stdout to a stringstream to capture the output
         std::stringstream output;
-        std::streambuf* oldCoutBuf = std::cout.rdbuf(output.rdbuf());
+        std::streambuf *oldCoutBuf = std::cout.rdbuf(output.rdbuf());
 
         print_current_reservations(guest_list, 3);
 
@@ -38,10 +42,11 @@ TEST_CASE("Print current reservations") {
         REQUIRE(output.str() == expectedOutput);
     }
 
-    SECTION("No reservations on the current date") {
+    SECTION("No reservations on the current date")
+    {
         // Redirect stdout to a stringstream to capture the output
         std::stringstream output;
-        std::streambuf* oldCoutBuf = std::cout.rdbuf(output.rdbuf());
+        std::streambuf *oldCoutBuf = std::cout.rdbuf(output.rdbuf());
 
         print_current_reservations(guest_list, 3);
 
@@ -55,17 +60,19 @@ TEST_CASE("Print current reservations") {
     }
 }
 
-TEST_CASE("Delete reservation") {
+TEST_CASE("Delete reservation2")
+{
     // Create a sample guest list
-    guest* guest_list = static_cast<guest*>(calloc(3, sizeof(guest)));
-    guest_list[0] = {"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
-    guest_list[1] = {"Boris", "Smith", "21.07.76", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
-    guest_list[2] = {"Mihajlo", "Erickson", "09.11.88", "15551234570", "321 Maple Drive", "mihajlo.erickson@example.com", "03.07.2023", "18:45", 2, "13", "18:30", "20:00"};
-    guest_list[2] = {"Christian", "Muster", "12.10.96", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023" , "18:45",4,"23", "18:45", "19:30"};
+    guest *guest_list = static_cast<guest *>(calloc(3, sizeof(guest)));
+    guest_list[0] = guest{"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
+    guest_list[1] = guest{"Boris", "Smith", "21.07.76", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
+    guest_list[2] = guest{"Mihajlo", "Erickson", "09.11.88", "15551234570", "321 Maple Drive", "mihajlo.erickson@example.com", "03.07.2023", "18:45", 2, "13", "18:30", "20:00"};
+    guest_list[2] = guest{"Christian", "Muster", "12.10.96", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023", "18:45", 4, "23", "18:45", "19:30"};
 
     char table_number[] = "23";
     char temp_time[] = "18:45";
-    SECTION("Delete an existing reservation") {
+    SECTION("Delete an existing reservation")
+    {
         delete_reservation(guest_list, 3, table_number);
 
         // Check if the reservation is deleted
@@ -77,7 +84,8 @@ TEST_CASE("Delete reservation") {
         REQUIRE(guest_list[1].num_guests == '\0');
     }
 
-    SECTION("Delete a non-existing reservation") {
+    SECTION("Delete a non-existing reservation")
+    {
         delete_reservation(guest_list, 3, table_number);
 
         // Check if the guest list remains unchanged
@@ -87,25 +95,28 @@ TEST_CASE("Delete reservation") {
     }
 }
 
-TEST_CASE("Guest arrival") {
+TEST_CASE("Guest arrival2")
+{
     // Create a sample guest list
-    guest* guest_list = static_cast<guest*>(calloc(3, sizeof(guest)));
-    guest_list[0] = {"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
-    guest_list[1] = {"Boris", "Smith", "21.07.76", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
-    guest_list[2] = {"Mihajlo", "Erickson", "09.11.88", "15551234570", "321 Maple Drive", "mihajlo.erickson@example.com", "03.07.2023", "18:45", 2, "13", "18:30", "20:00"};
-    guest_list[2] = {"Christian", "Muster", "12.10.96", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023" , "18:45",4,"23", "18:45", "19:30"};
+    guest *guest_list = static_cast<guest *>(calloc(3, sizeof(guest)));
+    guest_list[0] = guest{"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
+    guest_list[1] = guest{"Boris", "Smith", "21.07.76", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
+    guest_list[2] = guest{"Mihajlo", "Erickson", "09.11.88", "15551234570", "321 Maple Drive", "mihajlo.erickson@example.com", "03.07.2023", "18:45", 2, "13", "18:30", "20:00"};
+    guest_list[2] = guest{"Christian", "Muster", "12.10.96", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023", "18:45", 4, "23", "18:45", "19:30"};
 
     char table_number[] = "23";
     char temp_time[] = "18:45";
 
-    SECTION("Guest arrives at an existing reservation") {
+    SECTION("Guest arrives at an existing reservation")
+    {
         guest_arrival(guest_list, 3, table_number, temp_time);
 
         // Check if the arrival time is updated
         REQUIRE(std::strcmp(guest_list[1].arrival, temp_time) == 0);
     }
 
-    SECTION("Guest arrives at a non-existing reservation") {
+    SECTION("Guest arrives at a non-existing reservation")
+    {
         guest_arrival(guest_list, 3, table_number, temp_time);
 
         // Check if the guest list remains unchanged
@@ -115,25 +126,28 @@ TEST_CASE("Guest arrival") {
     }
 }
 
-TEST_CASE("Guest departure") {
+TEST_CASE("Guest departure2")
+{
     // Create a sample guest list
-    guest* guest_list = static_cast<guest*>(calloc(3, sizeof(guest)));
-    guest_list[0] = {"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
-    guest_list[1] = {"Boris", "Smith", "21.07.76", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
-    guest_list[2] = {"Mihajlo", "Erickson", "09.11.88", "15551234570", "321 Maple Drive", "mihajlo.erickson@example.com", "03.07.2023", "18:45", 2, "13", "18:30", "20:00"};
-    guest_list[2] = {"Christian", "Muster", "12.10.96", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023" , "18:45",4,"23", "18:45", "19:30"};
+    guest *guest_list = static_cast<guest *>(calloc(3, sizeof(guest)));
+    guest_list[0] = guest{"Lazar", "Clark", "12.02.1985", "15551234567", "123 Main Street", "lazar.clark@example.com", "24.06.2023", "14:45", 3, "11", "14:45", "15:45"};
+    guest_list[1] = guest{"Boris", "Smith", "21.07.76", "15551234568", "456 Elm Street", "boris.smith@example.com", "28.06.2023", "08:45", 4, "12", "08:45", "9:30"};
+    guest_list[2] = guest{"Mihajlo", "Erickson", "09.11.88", "15551234570", "321 Maple Drive", "mihajlo.erickson@example.com", "03.07.2023", "18:45", 2, "13", "18:30", "20:00"};
+    guest_list[2] = guest{"Christian", "Muster", "12.10.96", "6754938246", "Wexstrasse 45", "christimuster@gmail.com", "03.07.2023", "18:45", 4, "23", "18:45", "19:30"};
 
     char table_number[] = "23";
     char temp_time[] = "18:45";
-    
-    SECTION("Guest departs from an existing reservation") {
+
+    SECTION("Guest departs from an existing reservation")
+    {
         guest_departure(guest_list, 3, table_number, temp_time);
 
         // Check if the departure time is updated
         REQUIRE(std::strcmp(guest_list[1].departure, temp_time) == 0);
     }
 
-    SECTION("Guest departs from a non-existing reservation") {
+    SECTION("Guest departs from a non-existing reservation")
+    {
         guest_departure(guest_list, 3, table_number, temp_time);
 
         // Check if the guest list remains unchanged

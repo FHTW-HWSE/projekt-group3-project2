@@ -1,4 +1,6 @@
-#define CATCH_CONFIG_MAIN
+// #define CATCH_CONFIG_MAIN
+#include <iostream>
+#include <sstream>
 #include <catch.hpp>
 #include <cstring>
 #include <stdio.h>
@@ -13,8 +15,10 @@
 #include "user_validation.h"
 #include "board_operations.h"
 
-TEST_CASE("Write user data to CSV") {
-    SECTION("Write new guest reservation") {
+TEST_CASE("Write user data to CSV")
+{
+    SECTION("Write new guest reservation")
+    {
         // Create a new guest with reservation data
         guest new_guest;
         strcpy(new_guest.name, "John");
@@ -32,7 +36,7 @@ TEST_CASE("Write user data to CSV") {
 
         // Redirect stdout to a stringstream to capture the output
         std::stringstream output;
-        std::streambuf* oldCoutBuf = std::cout.rdbuf(output.rdbuf());
+        std::streambuf *oldCoutBuf = std::cout.rdbuf(output.rdbuf());
 
         write_user_data_to_csv(new_guest);
 
@@ -63,8 +67,10 @@ TEST_CASE("Write user data to CSV") {
     }
 }
 
-TEST_CASE("Read and write reservations") {
-    SECTION("Write and read guest reservations") {
+TEST_CASE("Read and write reservations")
+{
+    SECTION("Write and read guest reservations")
+    {
         // Create an array of guest reservations
         guest guest_list[2];
         strcpy(guest_list[0].name, "John");

@@ -14,8 +14,10 @@
 #include "user_validation.h"
 #include "board_operations.h"
 
-TEST_CASE("Write user data to CSV") {
-    SECTION("Write new guest reservation") {
+TEST_CASE("Write user data to CSV1")
+{
+    SECTION("Write new guest reservation")
+    {
         // Create a new guest with reservation data
         guest new_guest;
         strcpy(new_guest.name, "John");
@@ -33,7 +35,7 @@ TEST_CASE("Write user data to CSV") {
 
         // Redirect stdout to a stringstream to capture the output
         std::stringstream output;
-        std::streambuf* oldCoutBuf = std::cout.rdbuf(output.rdbuf());
+        std::streambuf *oldCoutBuf = std::cout.rdbuf(output.rdbuf());
 
         write_user_data_to_csv(new_guest);
 
@@ -64,8 +66,10 @@ TEST_CASE("Write user data to CSV") {
     }
 }
 
-TEST_CASE("Read and write reservations") {
-    SECTION("Write and read guest reservations") {
+TEST_CASE("Read and write reservations1")
+{
+    SECTION("Write and read guest reservations")
+    {
         // Create an array of guest reservations
         guest guest_list[2];
         strcpy(guest_list[0].name, "John");
@@ -130,17 +134,19 @@ TEST_CASE("Read and write reservations") {
     }
 }
 
-TEST_CASE("Print current reservations") {
+TEST_CASE("Print current reservations1")
+{
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = { "John", "Doe", "01.07.2023", "12:00", "A01", 4 };
-    guest_list[1] = { "Jane", "Smith", "01.07.2023", "13:00", "B02", 2 };
-    guest_list[2] = { "Bob", "Johnson", "02.07.2023", "14:00", "C03", 3 };
+    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
+    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
+    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
 
-    SECTION("Reservations on the current date") {
+    SECTION("Reservations on the current date")
+    {
         // Redirect stdout to a stringstream to capture the output
         std::stringstream output;
-        std::streambuf* oldCoutBuf = std::cout.rdbuf(output.rdbuf());
+        std::streambuf *oldCoutBuf = std::cout.rdbuf(output.rdbuf());
 
         print_current_reservations(guest_list, 3);
 
@@ -155,10 +161,11 @@ TEST_CASE("Print current reservations") {
         REQUIRE(output.str() == expectedOutput);
     }
 
-    SECTION("No reservations on the current date") {
+    SECTION("No reservations on the current date")
+    {
         // Redirect stdout to a stringstream to capture the output
         std::stringstream output;
-        std::streambuf* oldCoutBuf = std::cout.rdbuf(output.rdbuf());
+        std::streambuf *oldCoutBuf = std::cout.rdbuf(output.rdbuf());
 
         print_current_reservations(guest_list, 3);
 
@@ -172,14 +179,16 @@ TEST_CASE("Print current reservations") {
     }
 }
 
-TEST_CASE("Delete reservation") {
+TEST_CASE("Delete reservation1")
+{
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = { "John", "Doe", "01.07.2023", "12:00", "A01", 4 };
-    guest_list[1] = { "Jane", "Smith", "01.07.2023", "13:00", "B02", 2 };
-    guest_list[2] = { "Bob", "Johnson", "02.07.2023", "14:00", "C03", 3 };
+    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
+    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
+    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
 
-    SECTION("Delete an existing reservation") {
+    SECTION("Delete an existing reservation")
+    {
         delete_reservation(guest_list, 3, "B02");
 
         // Check if the reservation is deleted
@@ -191,7 +200,8 @@ TEST_CASE("Delete reservation") {
         REQUIRE(guest_list[1].num_guests == '\0');
     }
 
-    SECTION("Delete a non-existing reservation") {
+    SECTION("Delete a non-existing reservation")
+    {
         delete_reservation(guest_list, 3, "D04");
 
         // Check if the guest list remains unchanged
@@ -201,21 +211,24 @@ TEST_CASE("Delete reservation") {
     }
 }
 
-TEST_CASE("Guest arrival") {
+TEST_CASE("Guest arrival1")
+{
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = { "John", "Doe", "01.07.2023", "12:00", "A01", 4 };
-    guest_list[1] = { "Jane", "Smith", "01.07.2023", "13:00", "B02", 2 };
-    guest_list[2] = { "Bob", "Johnson", "02.07.2023", "14:00", "C03", 3 };
+    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
+    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
+    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
 
-    SECTION("Guest arrives at an existing reservation") {
+    SECTION("Guest arrives at an existing reservation")
+    {
         guest_arrival(guest_list, 3, "B02", "12:30");
 
         // Check if the arrival time is updated
         REQUIRE(std::strcmp(guest_list[1].arrival, "12:30") == 0);
     }
 
-    SECTION("Guest arrives at a non-existing reservation") {
+    SECTION("Guest arrives at a non-existing reservation")
+    {
         guest_arrival(guest_list, 3, "D04", "12:30");
 
         // Check if the guest list remains unchanged
@@ -225,21 +238,24 @@ TEST_CASE("Guest arrival") {
     }
 }
 
-TEST_CASE("Guest departure") {
+TEST_CASE("Guest departure1")
+{
     // Create a sample guest list
     guest guest_list[3];
-    guest_list[0] = { "John", "Doe", "01.07.2023", "12:00", "A01", 4 };
-    guest_list[1] = { "Jane", "Smith", "01.07.2023", "13:00", "B02", 2 };
-    guest_list[2] = { "Bob", "Johnson", "02.07.2023", "14:00", "C03", 3 };
+    guest_list[0] = guest{"John", "Doe", "01.07.2023", "12:00", "A01", 4};
+    guest_list[1] = guest{"Jane", "Smith", "01.07.2023", "13:00", "B02", 2};
+    guest_list[2] = guest{"Bob", "Johnson", "02.07.2023", "14:00", "C03", 3};
 
-    SECTION("Guest departs from an existing reservation") {
+    SECTION("Guest departs from an existing reservation")
+    {
         guest_departure(guest_list, 3, "B02", "14:30");
 
         // Check if the departure time is updated
         REQUIRE(std::strcmp(guest_list[1].departure, "14:30") == 0);
     }
 
-    SECTION("Guest departs from a non-existing reservation") {
+    SECTION("Guest departs from a non-existing reservation")
+    {
         guest_departure(guest_list, 3, "D04", "14:30");
 
         // Check if the guest list remains unchanged
