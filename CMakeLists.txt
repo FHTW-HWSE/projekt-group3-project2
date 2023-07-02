@@ -22,6 +22,9 @@ target_include_directories(program_library PUBLIC include)
 # Create test executable
 add_executable(program_tests
   test/unit_tests.cpp
+  test/unittests_board_operations.cpp
+  test/unittests_changes.cpp
+  test/unittests_csv_operations.cpp
 )
 
 target_link_libraries(program_tests

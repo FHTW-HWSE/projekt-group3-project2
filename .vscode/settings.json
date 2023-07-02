@@ -3,6 +3,10 @@
         "changes.h": "c",
         "user_validation.h": "c",
         "csv_operations.h": "c",
-        "board_operations.h": "c"
+        "board_operations.h": "c",
+        "fstream": "cpp",
+        "ios": "cpp",
+        "locale": "cpp",
+        "sstream": "cpp"
     }
 }
